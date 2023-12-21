@@ -1,11 +1,13 @@
-PATH_STORAGE ?= "/home/ubuntu"
+# PATH_STORAGE ?= "/home/ubuntu"
+PATH_STORAGE="/media/kz/2TBCrucial/deeplearning-storage"
 
 NAME_NGC=pytorch:23.06-py3
-NAME_DATASET=object_detection
-NAME_CONFIG=StorageTest_24GB_v1
-NAME_MODEL=ssd_amp
+# NAME_DATASET=all
+# NAME_CONFIG=StorageTest_24GB_v1
+NAME_CONFIG=24GB_custom
+NAME_MODEL=all
 TIME_OUT=3000
-PATH_OUTPUT=results/StorageTest_24GB_v1/PyTorch_SSD_AMP
+PATH_OUTPUT="results/${NAME_CONFIG}/${NAME_MODEL}"
 
 
 install:
@@ -13,7 +15,7 @@ install:
 	cd ${PATH_STORAGE} && \
 	wget https://raw.githubusercontent.com/lambdal/deeplearning-benchmark/master/pytorch/setup.sh && \
 	chmod +x setup.sh && \
-	./setup.sh $NAME_NGC
+	./setup.sh ${NAME_NGC}
 
 
 create_data:

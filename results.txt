@@ -1,0 +1,17 @@
+NVIDIA GeForce RTX 3090
+
+DLL 2023-12-18 04:49:22.131885 - () avg_img/sec : 237.45539860360415 images/s med_img/sec : 237.58555541754814 images/s min_img/sec : 230.69374792024914 images/s max_img/sec : 239.11469311033434 images/s
+Done benchmarking. Total images: 28000	total time: 117.917	Average images/sec: 237.455	Median images/sec: 237.586
+Training performance = 237.58555603027344 FPS
+DLL 2023-12-18 04:49:22.132566 - (0,) time : 157.52870798110962 
+WARNING:root:DALI iterator does not support resetting while epoch is not finished. Ignoring...
+DLL 2023-12-18 04:49:22.133055 - () total time : 157.52870798110962 
+DLL 2023-12-18 04:49:22.133086 - () 
+PyTorch_SSD_AMP ended.
+/workspace
+Check results folder : /results/StorageTest_24GB_v1
+['PyTorch_SSD_AMP', 'summary.txt', 'sys_pytorch.txt']
+PyTorch_SSD_AMP                     :  sucessful
+Training performance = 237.58555603027344 FPS
+
+
