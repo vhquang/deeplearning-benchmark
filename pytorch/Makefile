@@ -1,14 +1,49 @@
 # PATH_STORAGE ?= "/home/ubuntu"
+# MAKEFILE_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+# PATH_STORAGE="${MAKEFILE_DIR}/storage"
 PATH_STORAGE="/media/kz/2TBCrucial/deeplearning-storage"
 
 NAME_NGC=pytorch:23.06-py3
 # NAME_DATASET=all
 # NAME_CONFIG=StorageTest_24GB_v1
 NAME_CONFIG=24GB_custom
-NAME_MODEL=all
+NAME_MODEL=ssd
 TIME_OUT=3000
-PATH_OUTPUT="results/${NAME_CONFIG}/${NAME_MODEL}"
+PATH_OUTPUT="results/${NAME_CONFIG}"
 
+DL_CONTAINER="dl-container"
+DL_IMAGE='dl-benchmark'
+
+
+make_image:
+	# pip install termcolor==2.4.0
+	# pip install git+https://github.com/NVIDIA/dllogger#egg=dllogger
+	# pip install -r benchmark/Detection/SSD/requirements.txt
+	
+	cd ${PATH_STORAGE}/deeplearning-benchmark/pytorch && \
+	docker run --name ${DL_CONTAINER} -ti\
+		--rm --shm-size=128g \
+		--gpus all \
+		-v ${PATH_STORAGE}/DeepLearningExamples/PyTorch:/workspace/benchmark \
+		-v ${PATH_STORAGE}/data:/data \
+		-v ${PATH_STORAGE}/deeplearning-benchmark/pytorch/scripts:/scripts \
+		nvcr.io/nvidia/${NAME_NGC} \
+		/bin/bash && \
+	docker commit ${DL_CONTAINER} ${DL_IMAGE}
+
+
+run_image:
+		# -v ${PATH_STORAGE}/deeplearning-benchmark/pytorch/results:/results \
+
+	cd ${PATH_STORAGE}/deeplearning-benchmark/pytorch && \
+	docker run -it\
+		--rm --shm-size=128g \
+		--gpus all \
+		-v ${PATH_STORAGE}/DeepLearningExamples/PyTorch:/workspace/benchmark \
+		-v ${PATH_STORAGE}/data:/data \
+		-v ${PATH_STORAGE}/deeplearning-benchmark/pytorch/scripts:/scripts \
+		${DL_IMAGE} \
+		/bin/bash -c "cp -r /scripts/* /workspace; ./run_benchmark.sh ${NAME_CONFIG} ${NAME_MODEL} ${TIME_OUT}"
 
 install:
 	docker pull nvcr.io/nvidia/${NAME_NGC} && \
