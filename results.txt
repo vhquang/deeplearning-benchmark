@@ -15,3 +15,9 @@ PyTorch_SSD_AMP                     :  sucessful
 Training performance = 237.58555603027344 FPS
 
 
+transformerxllarge_fp32
+
+# Zotac
+Training time: 2.83 minutes
+Training throughput: 4884.83 tok/s
+

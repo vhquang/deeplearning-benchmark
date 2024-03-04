@@ -7,12 +7,34 @@ NAME_NGC=pytorch:23.06-py3
 # NAME_DATASET=all
 # NAME_CONFIG=StorageTest_24GB_v1
 NAME_CONFIG=24GB_custom
-NAME_MODEL=all
+NAME_MODEL=bert_large_squad_fp32
 TIME_OUT=3000
 PATH_OUTPUT="results/${NAME_CONFIG}"
 
 DL_CONTAINER="dl-container"
 DL_IMAGE='dl-benchmark'
+
+### List of models  ###
+# ssd_amp
+# ssd_fp32
+# bert_base_squad_fp16
+# bert_base_squad_fp32
+# bert_large_squad_fp16
+# bert_large_squad_fp32
+# gnmt_fp16
+# gnmt_fp32
+# ncf_fp16
+# ncf_fp32
+# resnet50_amp
+# resnet50_fp32
+# tacotron2_fp16
+# tacotron2_fp32
+# transformerxlbase_fp16
+# transformerxlbase_fp32
+# transformerxllarge_fp16
+# transformerxllarge_fp32
+# waveglow_fp16
+# waveglow_fp32
 
 
 make_image:
