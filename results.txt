@@ -21,3 +21,23 @@ transformerxllarge_fp32
 Training time: 2.83 minutes
 Training throughput: 4884.83 tok/s
 
+# EVGA
+Training time: 2.75 minutes
+Training throughput: 5041.35 tok/s
+
+
+bert_large_squad_fp32
+
+# Zotac
+DLL 2024-03-04 09:40:32.075443 -  e2e_train_time : 72.38520550727844  training_sequences_per_second : 22.10396432236581  final_loss : 6.154038429260254 
+
+real	1m44.745s
+user	1m32.346s
+sys	0m13.473s
+
+# EVGA
+DLL 2024-03-07 16:26:28.225525 -  e2e_train_time : 71.43118262290955  training_sequences_per_second : 22.399181159389695  final_loss : 6.154038429260254 
+
+real	1m43.618s
+user	1m30.584s
+sys	0m13.495s
